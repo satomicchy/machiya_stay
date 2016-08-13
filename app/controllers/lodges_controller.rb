@@ -1,6 +1,10 @@
 class LodgesController < ApplicationController
   before_action :set_lodge, only: [:show, :edit, :update, :destroy]
 
+  def reserve
+    @lodge = Lodge.find(params[:lodge_id])
+  end
+
   def index
     @lodges = Lodge.all
   end
