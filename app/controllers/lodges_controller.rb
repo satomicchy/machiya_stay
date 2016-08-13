@@ -1,4 +1,5 @@
 class LodgesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :reserve, :reserve_create]
   before_action :set_lodge, only: [:show, :edit, :update, :destroy]
 
   def reserve

@@ -27,10 +27,14 @@
     <%= link_to 'Reserve', reserve_path(lodge_id: lodge.id), {class: "btn btn-default", target: "_blank"}%>
   </p>
 
-  <%= link_to 'Edit', edit_lodge_path(lodge) %>
-  <%= link_to 'Destroy', lodge, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% if current_user.present? %>
+    <%= link_to 'Edit', edit_lodge_path(lodge) %>
+    <%= link_to 'Destroy', lodge, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
 
   <hr>
 <% end %>
 
-<%= link_to 'New Lodge', new_lodge_path %>
+<% if current_user.present? %>
+  <%= link_to 'New Lodge', new_lodge_path %>
+<% end %>
