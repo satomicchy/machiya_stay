@@ -5,6 +5,14 @@ class LodgesController < ApplicationController
     @lodge = Lodge.find(params[:lodge_id])
   end
 
+  def reserve_create
+    @lodge = Lodge.find(lodge_params[:id])
+    LodgeMailer.reserve_email.deliver
+    LodgeMailer.thanks_email(lodge_params[:person_email]).deliver
+
+    redirect_to root_path
+  end
+
   def index
     @lodges = Lodge.all
   end
@@ -54,6 +62,6 @@ class LodgesController < ApplicationController
     end
 
     def lodge_params
-      params.require(:lodge).permit(:name, :address, :tel, :url, :description, :available, :picture)
+      params.require(:lodge).permit(:name, :address, :tel, :url, :description, :available, :picture, :id, :person_name, :person_email, :message)
     end
 end
