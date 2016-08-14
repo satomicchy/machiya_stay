@@ -18,7 +18,7 @@
     <strong>Address:</strong> <%= lodge.address %>
   </p>
   <p>
-    <strong>Price:</strong> <%= number_to_currency lodge.price, precision: 0, unit: "¥" %>
+    <strong>Price:</strong> <%= number_to_currency lodge.price, precision: 0, unit: "¥" %>&nbsp;/1person
   </p>
   <p>
     <strong>Url:</strong> <%= link_to lodge.url, "#{lodge.url}", {target: "_blank"} %>
