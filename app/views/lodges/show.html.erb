@@ -21,6 +21,11 @@
 </p>
 
 <p>
+  <strong>Price:</strong>
+  <%= number_to_currency @lodge.price, precision: 0, unit: "¥" %>
+</p>
+
+<p>
   <strong>Description:</strong>
   <%= @lodge.description %>
 </p>
