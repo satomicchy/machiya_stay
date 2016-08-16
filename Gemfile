@@ -51,3 +51,4 @@ gem 'dotenv-rails'
 gem 'devise'
 gem 'pg'
 gem 'rails_12factor', group: :production
+gem 'carrierwave'
