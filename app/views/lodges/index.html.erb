@@ -1,39 +1,53 @@
-<p id="notice"><%= notice %></p>
+<!-- Page Header -->
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">Machiya - Japanese Style Lodges
+      <small>September 7th-10th, 2016</small>
+    </h1>
+  </div>
+</div>
+<!-- /.row -->
 
-<h1>Machiya - Japanese Style Lodges</h1>
-<h3>September 7th-10th, 2016</h3>
+<!-- Projects Row -->
+<div class="row">
 
-<div>&nbsp;</div>
+  <% @lodges.each do |lodge| %>
+    <div class="col-md-4 portfolio-item">
+      <a href="#">
+        <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+      </a>
+      <h3>
+        <%= lodge.name %>
+        <small>
+          <% if lodge.available == false %>
+            <span class="label label-danger">No vacancy</span>
+          <% else %>
+            <span class="label label-primary">Available</span>
+          <% end %>
+        </small>
+      </h3>
+      <p>
+        <strong>Address:</strong> <%= lodge.address %>
+      </p>
+      <p>
+        <strong>Price:</strong> <%= number_to_currency lodge.price, precision: 0, unit: "¥" %>&nbsp;/1person
+      </p>
+      <p>
+        <strong>Url:</strong> <%= link_to lodge.url, "#{lodge.url}", {target: "_blank"} %>
+      </p>
+      <p>
+        <%= link_to 'Reserve', reserve_path(lodge_id: lodge.id), {class: "btn btn-default", target: "_blank"}%>
+      </p>
 
-<% @lodges.each do |lodge| %>
-  <p>
-    <strong>Name:</strong> <%= lodge.name %>
-    <% if lodge.available == false %>
-      <span class="label label-danger">No vacancy</span>
-    <% else %>
-      <span class="label label-primary">Available</span>
-    <% end %>
-  </p>
-  <p>
-    <strong>Address:</strong> <%= lodge.address %>
-  </p>
-  <p>
-    <strong>Price:</strong> <%= number_to_currency lodge.price, precision: 0, unit: "¥" %>&nbsp;/1person
-  </p>
-  <p>
-    <strong>Url:</strong> <%= link_to lodge.url, "#{lodge.url}", {target: "_blank"} %>
-  </p>
-  <p>
-    <%= link_to 'Reserve', reserve_path(lodge_id: lodge.id), {class: "btn btn-default", target: "_blank"}%>
-  </p>
-
-  <% if current_user.present? %>
-    <%= link_to 'Edit', edit_lodge_path(lodge) %>
-    <%= link_to 'Destroy', lodge, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% if current_user.present? %>
+        <%= link_to 'Edit', edit_lodge_path(lodge) %>
+        <%= link_to 'Destroy', lodge, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
   <% end %>
 
-  <hr>
-<% end %>
+</div>
+<!-- /.row -->
 
 <% if current_user.present? %>
   <%= link_to 'New Lodge', new_lodge_path %>
