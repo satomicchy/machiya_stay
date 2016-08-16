@@ -52,3 +52,4 @@ gem 'devise'
 gem 'pg'
 gem 'rails_12factor', group: :production
 gem 'carrierwave'
+gem 'mini_magick'

@@ -15,7 +15,7 @@ class LodgesController < ApplicationController
   end
 
   def index
-    @lodges = Lodge.all
+    @lodges = Lodge.all.order(:id)
   end
 
   def show

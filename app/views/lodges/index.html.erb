@@ -13,9 +13,9 @@
 
   <% @lodges.each do |lodge| %>
     <div class="col-md-4 portfolio-item">
-      <a href="#">
-        <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-      </a>
+      <% if lodge.picture.present? %>
+        <%= image_tag lodge.picture_url, width: 700, class: "img-responsive" %>
+      <% end %>
       <h3>
         <%= lodge.name %>
         <small>
