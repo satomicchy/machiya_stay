@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-lg-12">
     <h1 class="page-header">Machiya - Japanese Style Lodges
-      <small>September 7th-10th, 2016</small>
+      <small>September 8th-11th, 2016</small>
     </h1>
   </div>
 </div>
@@ -11,38 +11,48 @@
 <!-- Projects Row -->
 <div class="row">
 
-  <% @lodges.each do |lodge| %>
-    <div class="col-md-4 portfolio-item">
-      <% if lodge.picture.present? %>
-        <%= image_tag lodge.picture_url, width: 700, class: "img-responsive" %>
-      <% end %>
-      <h3>
-        <%= lodge.name %>
-        <small>
-          <% if lodge.available == false %>
-            <span class="label label-danger">No vacancy</span>
-          <% else %>
-            <span class="label label-primary">Available</span>
-          <% end %>
-        </small>
-      </h3>
-      <p>
-        <strong>Address:</strong> <%= lodge.address %>
-      </p>
-      <p>
-        <strong>Price:</strong> <%= number_to_currency lodge.price, precision: 0, unit: "¥" %>&nbsp;/1person
-      </p>
-      <p>
-        <strong>Url:</strong> <%= link_to lodge.url, "#{lodge.url}", {target: "_blank"} %>
-      </p>
-      <p>
-        <%= link_to 'Reserve', reserve_path(lodge_id: lodge.id), {class: "btn btn-default", target: "_blank"}%>
-      </p>
+  <% @lodges.each_with_index do |lodge, i| %>
+    <div class="col-md-12 portfolio-item">
 
-      <% if current_user.present? %>
-        <%= link_to 'Edit', edit_lodge_path(lodge) %>
-        <%= link_to 'Destroy', lodge, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
+      <div class="col-md-4 no_padding">
+        <h3>
+          <%= lodge.name %>
+        </h3>
+        <p>
+          <strong>Location:</strong> <%= lodge.location %>
+        </p>
+        <p>
+          <strong>Price:</strong> <%= lodge.price_info %>
+        </p>
+        <p>
+          <strong>Room:</strong> <%= lodge.description %>
+        </p>
+        <p>
+          <strong>Url:</strong> <%= link_to lodge.url, "#{lodge.url}", {target: "_blank"} %>
+        </p>
+        <p>
+          <%= link_to 'Reserve', reserve_path(lodge_id: lodge.id), {class: "btn btn-default", target: "_blank"}%>
+        </p>
+
+        <% if current_user.present? %>
+          <%= link_to 'Edit', edit_lodge_path(lodge) %>
+          <%= link_to 'Destroy', lodge, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
+
+      <div class="col-md-8 no_padding">
+        <% if lodge.picture.present? %>
+          <div class="col-md-6 no_padding">
+            <%= image_tag lodge.picture_url, class: "img-responsive" %>
+          </div>
+        <% end %>
+        <% if lodge.picture2.present? %>
+          <div class="col-md-6 pull-right no_padding">
+            <%= image_tag lodge.picture2_url, class: "img-responsive" %>
+          </div>
+        <% end %>
+      </div>
+
     </div>
   <% end %>
 

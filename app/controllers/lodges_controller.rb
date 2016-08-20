@@ -1,6 +1,6 @@
 class LodgesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :reserve, :reserve_create]
-  before_action :set_lodge, only: [:show, :edit, :update, :destroy]
+  before_action :set_lodge, only: [:edit, :update, :destroy]
 
   def reserve
     @lodge = Lodge.find(params[:lodge_id])
@@ -18,9 +18,6 @@ class LodgesController < ApplicationController
     @lodges = Lodge.all.order(:id)
   end
 
-  def show
-  end
-
   def new
     @lodge = Lodge.new
   end
@@ -33,7 +30,7 @@ class LodgesController < ApplicationController
 
     respond_to do |format|
       if @lodge.save
-        format.html { redirect_to @lodge, notice: 'Lodge was successfully created.' }
+        format.html { redirect_to lodges_path, notice: 'Lodge was successfully created.' }
       else
         format.html { render :new }
       end
@@ -43,7 +40,7 @@ class LodgesController < ApplicationController
   def update
     respond_to do |format|
       if @lodge.update(lodge_params)
-        format.html { redirect_to @lodge, notice: 'Lodge was successfully updated.' }
+        format.html { redirect_to lodges_path, notice: 'Lodge was successfully updated.' }
       else
         format.html { render :edit }
       end
