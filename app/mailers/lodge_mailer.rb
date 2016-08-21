@@ -1,9 +1,21 @@
 class LodgeMailer < ApplicationMailer
-  def reserve_email
-    mail(to: ENV['MAIL_TO'], subject: "お申し込みのお知らせ")
+  def reserve_email(params)
+    @lodge        = Lodge.find(params[:id])
+    @keyword      = params[:keyword]
+    @person_name  = params[:person_name]
+    @person_code  = params[:person_code]
+    @person_email = params[:person_email]
+    @message      = params[:message]
+    mail(to: ENV['MAIL_TO'], subject: "RubyKaigi2016から町屋のお申し込みのお知らせ")
   end
 
-  def thanks_email(email)
-    mail(to: email, subject: "Thank you for your reservation!")
+  def thanks_email(params)
+    @lodge        = Lodge.find(params[:id])
+    @keyword      = params[:keyword]
+    @person_name  = params[:person_name]
+    @person_code  = params[:person_code]
+    @person_email = params[:person_email]
+    @message      = params[:message]
+    mail(to: params[:person_email], cc: ENV['MAIL_CC'], subject: "Thank you for making your reservation!")
   end
 end
