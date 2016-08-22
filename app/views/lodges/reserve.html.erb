@@ -26,22 +26,32 @@
   </div>
 
   <div class="form-group">
-    <label for="person_email">Keyword(promothion code) * Please fill in the special keyword for ruby kaigi 2016.</label>
+    <label for="person_name">Check-in date</label>
+    <%= f.text_field :checkin, class: "form-control width_300" %>
+  </div>
+
+  <div class="form-group">
+    <label for="person_name">Check-out date</label>
+    <%= f.text_field :checkout, class: "form-control width_300" %>
+  </div>
+
+  <div class="form-group">
+    <label for="person_email">Keyword (promothion code) * Please fill in the special keyword for ruby kaigi 2016.</label>
     <%= f.text_field :keyword, class: "form-control width_300" %>
   </div>
 
   <div class="form-group">
-    <label for="person_email">Your RubyKaigi2016 Doorkeeper Check In Code *</label>
+    <label for="person_email">Your RubyKaigi2016 Doorkeeper Check In Code</label>
     <%= f.text_field :person_code, class: "form-control width_300" %>
   </div>
 
   <div class="form-group">
-    <label for="person_name">Your Name *</label>
+    <label for="person_name">Your Name</label>
     <%= f.text_field :person_name, class: "form-control width_300" %>
   </div>
 
   <div class="form-group">
-    <label for="person_email">Your Email *</label>
+    <label for="person_email">Your Email</label>
     <%= f.text_field :person_email, class: "form-control width_300" %>
   </div>
 
@@ -51,6 +61,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit 'Reserve' %>
+    <%= f.submit 'Send' %>
   </div>
 <% end %>

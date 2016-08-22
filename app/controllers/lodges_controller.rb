@@ -59,6 +59,6 @@ class LodgesController < ApplicationController
     end
 
     def lodge_params
-      params.require(:lodge).permit(:name, :address, :tel, :url, :description, :available, :picture, :price, :id, :person_name, :person_email, :person_code, :message, :keyword, :location, :price_info, :picture2)
+      params.require(:lodge).permit(:name, :address, :tel, :url, :description, :available, :picture, :price, :id, :person_name, :person_email, :person_code, :message, :keyword, :location, :price_info, :picture2, :checkin, :checkout)
     end
 end
