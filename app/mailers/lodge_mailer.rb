@@ -1,6 +1,8 @@
 class LodgeMailer < ApplicationMailer
   def reserve_email(params)
     @lodge        = Lodge.find(params[:id])
+    @checkin      = params[:checkin]
+    @checkout     = params[:checkout]
     @keyword      = params[:keyword]
     @person_name  = params[:person_name]
     @person_code  = params[:person_code]
@@ -11,6 +13,8 @@ class LodgeMailer < ApplicationMailer
 
   def thanks_email(params)
     @lodge        = Lodge.find(params[:id])
+    @checkin      = params[:checkin]
+    @checkout     = params[:checkout]
     @keyword      = params[:keyword]
     @person_name  = params[:person_name]
     @person_code  = params[:person_code]
