@@ -12,7 +12,7 @@ class LodgesController < ApplicationController
     if @lodge.valid?
       LodgeMailer.reserve_email(lodge_params).deliver
       LodgeMailer.thanks_email(lodge_params).deliver
-      redirect_to root_path
+      redirect_to root_path, notice: "Successfully posted"
     else
       render "reserve"
     end

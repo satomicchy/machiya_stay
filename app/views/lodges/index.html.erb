@@ -4,6 +4,13 @@
     <h1 class="page-header">Machiya - Japanese Style Lodges
       <small>September 7th-11st, 2016</small>
     </h1>
+
+    <% if notice = flash[:notice] %>
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= notice %>
+      </div>
+    <% end %>
   </div>
 </div>
 <!-- /.row -->

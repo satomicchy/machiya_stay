@@ -1,5 +1,6 @@
 <%= form_for(@lodge, url: reserve_path, method: :post) do |f| %>
   <% if @lodge.errors.any? %>
+    <br />
     <% @lodge.errors.full_messages.each do |message| %>
       <div class="alert alert-danger" role="alert"><%= message %></div>
     <% end %>
