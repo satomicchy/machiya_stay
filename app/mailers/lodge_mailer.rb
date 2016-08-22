@@ -8,7 +8,7 @@ class LodgeMailer < ApplicationMailer
     @person_code  = params[:person_code]
     @person_email = params[:person_email]
     @message      = params[:message]
-    mail(to: ENV['MAIL_TO'], subject: "RubyKaigi2016から町屋のお申し込みのお知らせ")
+    mail(to: ENV['MAIL_TO'], cc: ENV['MAIL_CC'], subject: "RubyKaigi2016から町屋のお申し込みのお知らせ")
   end
 
   def thanks_email(params)
