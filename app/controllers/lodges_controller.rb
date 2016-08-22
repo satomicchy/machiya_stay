@@ -7,10 +7,15 @@ class LodgesController < ApplicationController
   end
 
   def reserve_create
-    LodgeMailer.reserve_email(lodge_params).deliver
-    LodgeMailer.thanks_email(lodge_params).deliver
-
-    redirect_to root_path
+    @lodge = Lodge.find(lodge_params[:id])
+    @lodge.attributes = lodge_params
+    if @lodge.valid?
+      LodgeMailer.reserve_email(lodge_params).deliver
+      LodgeMailer.thanks_email(lodge_params).deliver
+      redirect_to root_path
+    else
+      render "reserve"
+    end
   end
 
   def index

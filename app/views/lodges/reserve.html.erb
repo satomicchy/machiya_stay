@@ -1,14 +1,8 @@
 <%= form_for(@lodge, url: reserve_path, method: :post) do |f| %>
   <% if @lodge.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(lodge.errors.count, "error") %> prohibited this lodge from being saved:</h2>
-
-      <ul>
-      <% lodge.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+    <% @lodge.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger" role="alert"><%= message %></div>
+    <% end %>
   <% end %>
 
   <div class="form-group">
