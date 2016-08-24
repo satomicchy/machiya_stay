@@ -8,6 +8,7 @@ class LodgeMailer < ApplicationMailer
     @person_code  = params[:person_code]
     @person_email = params[:person_email]
     @message      = params[:message]
+    @number_of_people = params[:number_of_people]
     mail(to: ENV['MAIL_TO'], cc: ENV['MAIL_CC'], subject: "RubyKaigi2016から町屋のお申し込みのお知らせ")
   end
 
@@ -20,6 +21,7 @@ class LodgeMailer < ApplicationMailer
     @person_code  = params[:person_code]
     @person_email = params[:person_email]
     @message      = params[:message]
+    @number_of_people = params[:number_of_people]
     mail(to: params[:person_email], cc: ENV['MAIL_CC'], subject: "Thank you for making your reservation!")
   end
 end
