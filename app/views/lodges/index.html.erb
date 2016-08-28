@@ -38,7 +38,11 @@
           <strong>Url:</strong> <%= link_to lodge.url, "#{lodge.url}", {target: "_blank"} %>
         </p>
         <p>
-          <%= link_to 'Reserve', reserve_path(lodge_id: lodge.id), {class: "btn btn-default", target: "_blank"}%>
+          <% if lodge.available == true %>
+            <%= link_to 'Reserve', reserve_path(lodge_id: lodge.id), {class: "btn btn-default", target: "_blank"}%>
+          <% else %>
+            Not Available
+          <% end %>
         </p>
 
         <% if current_user.present? %>
